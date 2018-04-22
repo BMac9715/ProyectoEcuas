@@ -13,12 +13,21 @@ namespace ProyectoPoblacion
     public partial class Form1 : Form
     {
         private const int pop = 400;
+        private const int margen = 30;
         private List<int> enfermos;
+        private List<int> contadorEnfermos;
         private Random rnd;
         private int counter;
         private int n;
         private int k;
         private bool turn;
+        private int proporciónCuadrículaX;
+        private int proporciónCuadrículaY;
+        private Graphics G;
+        private int puntoX1;
+        private int puntoY1;
+        private int puntoX2;
+        private int puntoY2;
 
         public Form1()
         {
@@ -32,9 +41,14 @@ namespace ProyectoPoblacion
             n = rnd.Next(1, 400);
             dgvPoblacion.Rows[GetY(n)].Cells[GetX(n)].Style.BackColor = Color.Green;
             enfermos = new List<int>();
+            contadorEnfermos = new List<int>();
             enfermos.Add(n);
+            contadorEnfermos.Add(1);
             k = 2;
             turn = true;
+
+            //Inicialización del picturebox
+            InitializePictureBox();
         }
 
         /// <summary>
@@ -49,6 +63,25 @@ namespace ProyectoPoblacion
             {
                 dgvPoblacion.Rows[i].Height = 20;
                 dgvPoblacion.Columns[i].Width = 20;
+            }
+        }
+
+        /// <summary>
+        /// Método que inicializa el picturebox creando la cuadrícula.
+        /// </summary>
+        private void InitializePictureBox(){
+            proporciónCuadrículaX = (picGráfica.Width - margen)/40;
+            proporciónCuadrículaY = (picGráfica.Height-margen) / 40;
+            G = picGráfica.CreateGraphics();
+            G.Clear(Color.Black);
+            for (int i = 0; i < 40; i++)
+            {
+                G.DrawLine(Pens.DarkGray, 0 + margen, proporciónCuadrículaY * i, picGráfica.Width, proporciónCuadrículaY * i);
+                G.DrawLine(Pens.DarkGray, proporciónCuadrículaX * i + margen, 0, proporciónCuadrículaX * i + margen, picGráfica.Height-margen);
+                if (i<20){
+                    G.DrawString((390 - (20 * i)).ToString(), new Font("Arial", 8), Brushes.LightGreen, 10, proporciónCuadrículaY * i * 2);
+                }
+                G.DrawString((i*2).ToString(), new Font("Arial", 8), Brushes.LightGreen, proporciónCuadrículaX * (i*2) + margen-5, 401);
             }
         }
 
@@ -202,6 +235,7 @@ namespace ProyectoPoblacion
             else
             {
                 Contagiar();
+                contadorEnfermos.Add(enfermos.Count);
                 turn = true;
             }
         }
@@ -213,6 +247,20 @@ namespace ProyectoPoblacion
         private int GetEnfermos()
         {
             return enfermos.Count;
+        }
+
+        private void btnGráfica_Click(object sender, EventArgs e)
+        {
+            InitializePictureBox();
+            for (int i = 1; i < contadorEnfermos.Count; i++)
+            {
+                puntoX1 = proporciónCuadrículaX * (i-1) + margen;
+                puntoY1 = 400 - contadorEnfermos.ElementAt(i-1);
+                puntoX2 = proporciónCuadrículaX * i + margen;
+                puntoY2 = 400 - contadorEnfermos.ElementAt(i);
+                G.DrawLine(Pens.LightCyan, puntoX1, puntoY1, puntoX2, puntoY2);
+            }
+
         }
     }   
 }
