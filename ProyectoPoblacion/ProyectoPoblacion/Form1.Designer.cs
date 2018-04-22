@@ -30,10 +30,10 @@
         {
             this.dgvPoblacion = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnReiniciar = new System.Windows.Forms.Button();
             this.btnGráfica = new System.Windows.Forms.Button();
             this.btnCiclo = new System.Windows.Forms.Button();
             this.picGráfica = new System.Windows.Forms.PictureBox();
-            this.btnReiniciar = new System.Windows.Forms.Button();
             this.lbEjeX = new System.Windows.Forms.Label();
             this.lbEjeY = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPoblacion)).BeginInit();
@@ -63,6 +63,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Opciones";
             // 
+            // btnReiniciar
+            // 
+            this.btnReiniciar.Location = new System.Drawing.Point(315, 47);
+            this.btnReiniciar.Name = "btnReiniciar";
+            this.btnReiniciar.Size = new System.Drawing.Size(101, 23);
+            this.btnReiniciar.TabIndex = 2;
+            this.btnReiniciar.Text = "Reiniciar";
+            this.btnReiniciar.UseVisualStyleBackColor = true;
+            this.btnReiniciar.Click += new System.EventHandler(this.btnReiniciar_Click);
+            // 
             // btnGráfica
             // 
             this.btnGráfica.Location = new System.Drawing.Point(172, 47);
@@ -91,15 +101,6 @@
             this.picGráfica.Size = new System.Drawing.Size(430, 430);
             this.picGráfica.TabIndex = 2;
             this.picGráfica.TabStop = false;
-            // 
-            // btnReiniciar
-            // 
-            this.btnReiniciar.Location = new System.Drawing.Point(315, 47);
-            this.btnReiniciar.Name = "btnReiniciar";
-            this.btnReiniciar.Size = new System.Drawing.Size(101, 23);
-            this.btnReiniciar.TabIndex = 2;
-            this.btnReiniciar.Text = "Reiniciar";
-            this.btnReiniciar.UseVisualStyleBackColor = true;
             // 
             // lbEjeX
             // 

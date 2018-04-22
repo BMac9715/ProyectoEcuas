@@ -262,5 +262,20 @@ namespace ProyectoPoblacion
             }
 
         }
+
+        /// <summary>
+        /// Reinicia el programa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnReiniciar_Click(object sender, EventArgs e)
+        {
+            //Reinicio del grid
+            enfermos.Clear();
+            for (int i=1;i <= 400;i++)
+            {
+                dgvPoblacion.Rows[GetY(i)].Cells[GetX(i)].Style.BackColor = Color.White;
+            }
+        }
     }   
 }
