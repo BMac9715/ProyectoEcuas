@@ -94,44 +94,37 @@ namespace ProyectoPoblacion
                             case 1:
                                 dgvPoblacion.Rows[GetY(enfermos[i] - 21)].Cells[GetX(enfermos[i] - 21)].Style.BackColor = Color.Green;
                                 VerificarContagio(enfermos[i] - 21);
-                                counter++;
                                 break;
                             case 2:
                                 dgvPoblacion.Rows[GetY(enfermos[i] - 20)].Cells[GetX(enfermos[i] - 20)].Style.BackColor = Color.Green;
                                 VerificarContagio(enfermos[i] - 20);
-                                counter++;
                                 break;
                             case 3:
                                 dgvPoblacion.Rows[GetY(enfermos[i] - 19)].Cells[GetX(enfermos[i] - 19)].Style.BackColor = Color.Green;
                                 VerificarContagio(enfermos[i] - 19);
-                                counter++;
                                 break;
                             case 4:
                                 dgvPoblacion.Rows[GetY(enfermos[i] - 1)].Cells[GetX(enfermos[i] - 1)].Style.BackColor = Color.Green;
                                 VerificarContagio(enfermos[i] - 1);
-                                counter++;
                                 break;
                             case 5:
                                 dgvPoblacion.Rows[GetY(enfermos[i] + 1)].Cells[GetX(enfermos[i] + 1)].Style.BackColor = Color.Green;
                                 VerificarContagio(enfermos[i] + 1);
-                                counter++;
                                 break;
                             case 6:
                                 dgvPoblacion.Rows[GetY(enfermos[i] + 19)].Cells[GetX(enfermos[i] + 19)].Style.BackColor = Color.Green;
                                 VerificarContagio(enfermos[i] + 19);
-                                counter++;
                                 break;
                             case 7:
                                 dgvPoblacion.Rows[GetY(enfermos[i] + 20)].Cells[GetX(enfermos[i] + 20)].Style.BackColor = Color.Green;
                                 VerificarContagio(enfermos[i] + 20);
-                                counter++;
                                 break;
                             case 8:
                                 dgvPoblacion.Rows[GetY(enfermos[i] + 21)].Cells[GetX(enfermos[i] + 21)].Style.BackColor = Color.Green;
                                 VerificarContagio(enfermos[i] + 21);
-                                counter++;
                                 break;
                         }
+                        counter++;
                     }
                     catch (ArgumentOutOfRangeException a)
                     {
@@ -211,6 +204,15 @@ namespace ProyectoPoblacion
                 Contagiar();
                 turn = true;
             }
+        }
+
+        /// <summary>
+        /// Devuelve el número de enfermos.
+        /// </summary>
+        /// <returns></returns>
+        private int GetEnfermos()
+        {
+            return enfermos.Count;
         }
     }   
 }
